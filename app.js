@@ -1,36 +1,30 @@
 class Common {
-    findAll(){
-        return []
+    db;
+    tableName
+    constructor(tableName) {
+        this.db = connectDb()
+        this.tableName = tableName
+    }
+    findAll(columns){
+        let s = columns.join(",").replace(/,$/, "");
+        return db.query(`select ${s} from ${this.tableName}`)
     }
 }
 
-
 class Post  extends  Common {
-
-    posts = []
-
     constructor() {
-        super()
+        super("posts")
     }
+}
 
-    getPosts(){
-        return this.posts;
-    }
-
-    addPost(post){
-        this.posts.push(post)
-    }
-
-    deletePost(postId){
-        return this.posts.filter(post=>post.id !== postId)
+class User extends  Common {
+    constructor() {
+        super("users")
     }
 }
 
 let post = new Post()
+post.findAll(["id", "slug", "title", "author_id", "created_at"])
 
-post.addPost({title: "Test post", price: 45.10})
-post.addPost({title: "Test post", price: 45.10})
-
-post.findAll()
-
-console.log(post.posts)
+let user = new User()
+user.findAll()

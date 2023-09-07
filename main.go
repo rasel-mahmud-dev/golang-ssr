@@ -2,29 +2,27 @@ package main
 
 import (
 	"awesomeProject/models"
-	"database/sql"
 	"fmt"
 )
 
-func DbConnect() *sql.DB {
-	// Connect to the database
-	db, err := sql.Open("sqlite3", "./database.db")
-	if err != nil {
-		panic(err)
-	}
-	//defer db.Close()
-	return db
-}
-
 func main() {
 
-	var post = models.InitPost()
+	var article = models.InitArticleRepository()
+	//var users = models.InitUserRepository()
 
-	post.AddPost(map[string]interface{}{"title": "Test post s", "price": 22.23})
-	post.AddPost(map[string]interface{}{"title": "Test post s", "price": 22.23})
+	//article.AddArticle(models.Article{
+	//	Title:         "Test projeject",
+	//	Content:       "23sdff",
+	//	AuthorID:      1,
+	//	Slug:          "f34",
+	//	CoverImageURL: "",
+	//	Status:        "",
+	//	WordCount:     0,
+	//	ReadTime:      0,
+	//})
 
-	fmt.Println(post.GetPosts())
+	ar := article.GetArticles()
 
-	fmt.Println(post.FindAll())
+	fmt.Println(ar)
 
 }
