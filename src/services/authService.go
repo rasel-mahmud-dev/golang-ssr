@@ -5,7 +5,6 @@ import (
 )
 
 func Login(email string, password string) map[string]interface{} {
-	userRepo := models.InitUserRepository()
-	user := userRepo.FindUser(email)
+	user := models.FindUser(email)
 	return user
 }

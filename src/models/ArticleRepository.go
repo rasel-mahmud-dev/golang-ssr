@@ -1,6 +1,7 @@
 package models
 
 import (
+	"awesomeProject/src/database"
 	"database/sql"
 	"fmt"
 )
@@ -21,8 +22,8 @@ type ArticleRepository struct {
 	Common
 }
 
-func (a *ArticleRepository) AddArticle(article Article) error {
-	_, err := a.Db.Exec(`INSERT INTO articles (title, content, author_id, slug, cover_image_url, status, word_count, read_time) 
+func AddArticle(article Article) error {
+	_, err := database.Db.Exec(`INSERT INTO articles (title, content, author_id, slug, cover_image_url, status, word_count, read_time) 
                         VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
 		article.Title, article.Content, article.AuthorID, article.Slug, article.CoverImageURL, article.Status, article.WordCount, article.ReadTime)
 
@@ -34,14 +35,8 @@ func (a *ArticleRepository) AddArticle(article Article) error {
 	return nil
 }
 
-func InitArticleRepository() *ArticleRepository {
-	return &ArticleRepository{
-		Common: *DatabaseConnectionInit("articles"),
-	}
-}
-
-func (a *ArticleRepository) GetArticles() []Article {
-	rows, err := a.Db.Query(`select article_id, slug from articles`)
+func GetArticles() []Article {
+	rows, err := database.Db.Query(`select article_id, slug from articles`)
 	if err != nil {
 		fmt.Println(err.Error())
 		return nil

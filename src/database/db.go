@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-var db *sql.DB
+var Db *sql.DB
 
 func DbConnect() {
 	// Connect to the database
@@ -15,7 +15,7 @@ func DbConnect() {
 	if err != nil {
 		panic(err)
 	}
-	db = cdb
+	Db = cdb
 	//defer db.Close()
 
 	file, err := os.ReadFile("seed_sql.sql")
@@ -23,6 +23,6 @@ func DbConnect() {
 		fmt.Println(err)
 	}
 
-	_, err = db.Exec(string(file))
+	_, err = Db.Exec(string(file))
 
 }

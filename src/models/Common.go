@@ -1,7 +1,6 @@
 package models
 
 import (
-	"awesomeProject/src/database"
 	"database/sql"
 )
 
@@ -10,12 +9,12 @@ type Common struct {
 	TableName string
 }
 
-func (c *Common) FindAll(columns []string) *sql.Rows {
-	rows, _ := c.Db.Query("select * from " + c.TableName)
-	return rows
-}
-
-func DatabaseConnectionInit(tableName string) *Common {
-	dbConnect := database.DbConnect()
-	return &Common{Db: dbConnect, TableName: tableName}
-}
+//func (c *Common) FindAll(columns []string) *sql.Rows {
+//	rows, _ := c.Db.Query("select * from " + c.TableName)
+//	return rows
+//}
+//
+//func DatabaseConnectionInit(tableName string) *Common {
+//	dbConnect := database.DbConnect()
+//	return &Common{Db: dbConnect, TableName: tableName}
+//}

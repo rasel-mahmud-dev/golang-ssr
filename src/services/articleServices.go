@@ -5,14 +5,9 @@ import (
 )
 
 func GetArticles() []models.Article {
-	a := models.InitArticleRepository()
-	return a.GetArticles()
+	return models.GetArticles()
 }
 
 func AddArticle(article models.Article) {
-	a := models.InitArticleRepository()
-	err := a.AddArticle(article)
-	if err != nil {
-		return
-	}
+	models.AddArticle(article)
 }
