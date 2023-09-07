@@ -7,22 +7,22 @@ import (
 	"os"
 )
 
-func DbConnect() *sql.DB {
+var db *sql.DB
+
+func DbConnect() {
 	// Connect to the database
-	db, err := sql.Open("sqlite", "./database.db")
+	cdb, err := sql.Open("sqlite", "./database.db")
 	if err != nil {
 		panic(err)
 	}
+	db = cdb
 	//defer db.Close()
 
 	file, err := os.ReadFile("seed_sql.sql")
 	if err != nil {
-		return nil
+		fmt.Println(err)
 	}
 
 	_, err = db.Exec(string(file))
-	if err != nil {
-		fmt.Println(err.Error())
-	}
-	return db
+
 }
