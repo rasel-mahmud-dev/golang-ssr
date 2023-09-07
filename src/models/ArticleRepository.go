@@ -36,7 +36,7 @@ func AddArticle(article Article) error {
 }
 
 func GetArticles() []Article {
-	rows, err := database.Db.Query(`select article_id, slug from articles`)
+	rows, err := database.Db.Query(`select article_id, title, content, slug from articles`)
 	if err != nil {
 		fmt.Println(err.Error())
 		return nil
@@ -50,7 +50,7 @@ func GetArticles() []Article {
 	var articles []Article
 	for rows.Next() {
 		var article Article
-		err := rows.Scan(&article.Id, &article.Slug)
+		err := rows.Scan(&article.Id, &article.Title, &article.Content, &article.Slug)
 		if err != nil {
 			return nil
 		}

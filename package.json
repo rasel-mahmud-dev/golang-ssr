@@ -1,0 +1,15 @@
+{
+  "name": "oop-golang",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "air && reflex -R '^node_modules/' -r '\\.go|.html$' -s -- sh -c \"go run app.go\"",
+    "watch": "npx tailwindcss -i ./src/public/styles/main.scss -o ./src/public/styles/main.css --watch"
+  },
+  "author": "rasel mahmud",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.3.3"
+  }
+}

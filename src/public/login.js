@@ -16,7 +16,8 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        // If validation passes, submit the form
-        this.submit();
+
+        console.log("ksadjfh")
+
     });
 });
