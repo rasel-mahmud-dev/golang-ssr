@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"awesomeProject/services"
+	"awesomeProject/src/services"
 	"github.com/gin-gonic/gin"
 )
 

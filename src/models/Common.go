@@ -1,7 +1,7 @@
 package models
 
 import (
-	"awesomeProject/database"
+	"awesomeProject/src/database"
 	"database/sql"
 )
 

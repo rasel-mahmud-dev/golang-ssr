@@ -1,6 +1,8 @@
 package services
 
-import "awesomeProject/models"
+import (
+	"awesomeProject/src/models"
+)
 
 func GetArticles() []models.Article {
 	a := models.InitArticleRepository()

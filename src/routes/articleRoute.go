@@ -1,7 +1,7 @@
 package routes
 
 import (
-	"awesomeProject/controllers"
+	"awesomeProject/src/controllers"
 	"github.com/gin-gonic/gin"
 )
 

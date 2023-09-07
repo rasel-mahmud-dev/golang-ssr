@@ -1,6 +1,8 @@
 package services
 
-import "awesomeProject/models"
+import (
+	"awesomeProject/src/models"
+)
 
 func Login(email string, password string) map[string]interface{} {
 	userRepo := models.InitUserRepository()

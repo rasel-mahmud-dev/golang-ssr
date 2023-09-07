@@ -1,8 +1,8 @@
 package controllers
 
 import (
-	"awesomeProject/models"
-	"awesomeProject/services"
+	"awesomeProject/src/models"
+	"awesomeProject/src/services"
 	"github.com/gin-gonic/gin"
 )
 
