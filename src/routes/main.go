@@ -10,6 +10,11 @@ func Route() *gin.Engine {
 
 	route := gin.Default()
 
+	api := route.Group("/api/v1")
+
+	ArticleRoute(api.Group("/articles"))
+	AuthRoute(api.Group("/users"))
+
 	route.Static("/static", "src/public")
 
 	// Configure the HTML template rendering
@@ -24,10 +29,9 @@ func Route() *gin.Engine {
 		context.HTML(http.StatusOK, "login.gohtml", nil)
 	})
 
-	route.Group("/api/v1")
-
-	ArticleRoute(route.Group("/articles"))
-	AuthRoute(route.Group("/users"))
+	route.GET("/add-article", func(context *gin.Context) {
+		context.HTML(http.StatusOK, "add-article.gohtml", nil)
+	})
 
 	return route
 }

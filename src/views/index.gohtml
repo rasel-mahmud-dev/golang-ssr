@@ -12,15 +12,17 @@
 {{ template "navbar.gohtml" }}
 
 
-<h1>Articles</h1>
+<div class="container">
+    <h1>Articles</h1>
 
-{{ range .Articles }}
-    <div class="article">
-        <h2>{{ .Title }}</h2>
-        <p>{{ .Content }}</p>
-    </div>
-{{ end }}
+    {{ range .Articles }}
+        <div class="bg-white p-4 my-10">
+            <h2>{{ .Title }}</h2>
+            <p>{{ .Content }}</p>
+        </div>
+    {{ end }}
 
+</div>
 
 </body>
 </html>

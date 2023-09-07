@@ -9,5 +9,7 @@ func GetArticles() []models.Article {
 }
 
 func AddArticle(article models.Article) {
+	article.Slug = article.Title
+	article.AuthorID = 1
 	models.AddArticle(article)
 }

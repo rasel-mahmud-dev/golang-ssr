@@ -534,6 +534,40 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.container {
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
+}
+
 .visible {
   visibility: visible;
 }
@@ -553,6 +587,11 @@ video {
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
+}
+
+.my-10 {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
 }
 
 .my-20 {
@@ -626,6 +665,10 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.p-10 {
+  padding: 2.5rem;
+}
+
 .p-20 {
   padding: 5rem;
 }
@@ -697,8 +740,8 @@ body {
   background: #eaeaf3;
 }
 
-input{
-  background: rgba(96, 165, 250, 0.18);
+input, textarea{
+  background: rgba(96, 165, 250, 0.18) !important;
   width: 100%;
   padding: 6px 10px;
   border-radius: 3px;
@@ -726,4 +769,15 @@ button{
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
   --tw-shadow-color: rgb(96 165 250 / 0.4);
   --tw-shadow: var(--tw-shadow-colored);
+}
+
+textarea{
+  min-height: 200px;
+  background: rgba(96, 165, 250, 0.18) !important;
+}
+
+.container{
+  max-width: 1200px !important;
+  margin: auto;
+  padding: 0 20px;
 }

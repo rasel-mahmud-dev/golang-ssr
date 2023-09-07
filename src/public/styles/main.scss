@@ -7,8 +7,8 @@ body {
   background: #eaeaf3;
 }
 
-input{
-  background: rgba(96, 165, 250, 0.18);
+input, textarea{
+  background: rgba(96, 165, 250, 0.18) !important;
   width: 100%;
   padding: 6px 10px;
   border-radius: 3px;
@@ -28,4 +28,15 @@ button{
 
 .header{
   @apply  p-4 rounded bg-white shadow-xl shadow-blue-400/40
+}
+
+textarea{
+  min-height: 200px;
+  background: rgba(96, 165, 250, 0.18) !important;
+}
+
+.container{
+  max-width: 1200px !important;
+  margin: auto;
+  padding: 0 20px;
 }

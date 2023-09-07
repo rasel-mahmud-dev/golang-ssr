@@ -19,7 +19,7 @@ CREATE TABLE if not exists articles
 
 -- Create an index on the slug column for faster lookups.
 CREATE UNIQUE INDEX if not exists idx_slug ON articles (slug);
-CREATE UNIQUE INDEX if not exists idx_author_id ON articles (author_id);
+CREATE  INDEX if not exists idx_author_id ON articles (author_id);
 
 CREATE TABLE if not exists users
 (
