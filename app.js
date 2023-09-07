@@ -5,15 +5,16 @@ class Common {
         this.db = connectDb()
         this.tableName = tableName
     }
-    findAll(columns){
-        let s = columns.join(",").replace(/,$/, "");
-        return db.query(`select ${s} from ${this.tableName}`)
-    }
+
 }
 
 class Post  extends  Common {
     constructor() {
         super("posts")
+    }
+
+    static findAllPost(columns){
+        return db.query(`select * from articles`)
     }
 }
 
@@ -21,10 +22,11 @@ class User extends  Common {
     constructor() {
         super("users")
     }
+    static findAllUsers(columns){
+        return db.query(`select * from users`)
+    }
 }
 
-let post = new Post()
-post.findAll(["id", "slug", "title", "author_id", "created_at"])
 
-let user = new User()
-user.findAll()
+Post.findAllPost()
+User.findAllUsers()

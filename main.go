@@ -1,28 +1,15 @@
 package main
 
 import (
-	"awesomeProject/models"
-	"fmt"
+	"awesomeProject/routes"
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
 
-	var article = models.InitArticleRepository()
-	//var users = models.InitUserRepository()
-
-	//article.AddArticle(models.Article{
-	//	Title:         "Test projeject",
-	//	Content:       "23sdff",
-	//	AuthorID:      1,
-	//	Slug:          "f34",
-	//	CoverImageURL: "",
-	//	Status:        "",
-	//	WordCount:     0,
-	//	ReadTime:      0,
-	//})
-
-	ar := article.GetArticles()
-
-	fmt.Println(ar)
+	route := gin.Default()
+	routes.Route(route.Group("/api/v1"))
+	
+	route.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 
 }
