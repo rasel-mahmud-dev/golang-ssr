@@ -1,8 +1,6 @@
 package models
 
 import (
-	"fmt"
-	"github.com/rasel-mahmud-dev/golang-ssr/src/database"
 	"time"
 )
 
@@ -30,16 +28,4 @@ func AddUser(article Article) error {
 	//	return err
 	//}
 	return nil
-}
-
-func FindUser(email string) (User, error) {
-	var user User
-	err := database.Db.QueryRow(`select id, email, password from users  u where u.email = $1`, email).
-		Scan(&user.ID, &user.Email, &user.Password)
-
-	if err != nil {
-		fmt.Println(err.Error())
-		return user, nil
-	}
-	return user, nil
 }

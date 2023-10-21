@@ -4,11 +4,12 @@ import (
 	"errors"
 	"fmt"
 	"github.com/rasel-mahmud-dev/golang-ssr/src/models"
+	"github.com/rasel-mahmud-dev/golang-ssr/src/repository"
 	"strconv"
 )
 
 func Login(email string, password string) (interface{}, error) {
-	user, _ := models.FindUser(email)
+	user, _ := repository.FindUser(email)
 
 	if user.Password != password {
 		return nil, errors.New("password wrong")
@@ -23,6 +24,12 @@ func Login(email string, password string) (interface{}, error) {
 		},
 		"token": token,
 	}, nil
+}
+
+func CreateUser(user models.User) (interface{}, error) {
+	result, err := repository.CreateUser(user)
+	return result, err
+
 }
 
 func VerifyAuthUser(token string) (interface{}, error) {

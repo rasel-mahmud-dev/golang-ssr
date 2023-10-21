@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/rasel-mahmud-dev/golang-ssr/src/models"
 	"github.com/rasel-mahmud-dev/golang-ssr/src/services"
 	"strings"
 )
@@ -25,7 +26,25 @@ func Login(c *gin.Context) {
 	}
 
 	c.JSON(200, user)
+}
 
+func Registration(c *gin.Context) {
+	var user models.User
+
+	err := c.Bind(&user)
+	if err != nil {
+		c.JSON(500, map[string]string{"message": err.Error()})
+		return
+	}
+
+	result, err := services.CreateUser(user)
+
+	if err != nil {
+		c.JSON(500, map[string]string{"message": err.Error()})
+		return
+	}
+
+	c.JSON(200, result)
 }
 
 func AuthVerify(c *gin.Context) {
