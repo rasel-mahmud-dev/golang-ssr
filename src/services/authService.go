@@ -13,7 +13,7 @@ func Login(email string, password string) (interface{}, error) {
 	user, _ := repository.FindUser(email)
 
 	if !hash.CheckPasswordHash(password, user.Password) {
-		return nil, errors.New("password wrong")
+		return nil, errors.New("password wrong .")
 	}
 
 	token := GenerateToken(int32(user.ID))

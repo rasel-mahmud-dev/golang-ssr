@@ -6,12 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7399b5be-dbb5-4d1a-a7f4-6ee4c3a520b4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/authController.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/authController.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/User.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/User.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repository/userRepository.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/userRepository.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/authService.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/authService.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp/build-errors.log" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/build-errors.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp/main.exe" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/main.exe" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
