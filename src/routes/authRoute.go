@@ -7,4 +7,5 @@ import (
 
 func AuthRoute(r *gin.RouterGroup) {
 	r.POST("login", controllers.Login)
+	r.GET("verify", controllers.AuthVerify)
 }
