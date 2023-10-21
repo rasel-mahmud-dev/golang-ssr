@@ -3,6 +3,7 @@ package controllers
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/rasel-mahmud-dev/golang-ssr/src/models"
+	"github.com/rasel-mahmud-dev/golang-ssr/src/repository"
 	"github.com/rasel-mahmud-dev/golang-ssr/src/services"
 	"strings"
 )
@@ -26,6 +27,18 @@ func Login(c *gin.Context) {
 	}
 
 	c.JSON(200, user)
+}
+
+func GetAllUsers(c *gin.Context) {
+
+	users, err := repository.FindUsers()
+
+	if err != nil {
+		c.JSON(500, map[string]string{"message": err.Error()})
+		return
+	}
+
+	c.JSON(200, users)
 }
 
 func Registration(c *gin.Context) {

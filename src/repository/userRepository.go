@@ -5,8 +5,30 @@ import (
 	"fmt"
 	"github.com/rasel-mahmud-dev/golang-ssr/src/database"
 	"github.com/rasel-mahmud-dev/golang-ssr/src/models"
+	"github.com/rasel-mahmud-dev/golang-ssr/src/services/hash"
 	"strings"
 )
+
+func FindUsers() ([]models.User, error) {
+	var users []models.User
+
+	rows, err := database.Db.Query(`select id, email, first_name, last_name, password from users`)
+	if err != nil {
+		fmt.Println(err.Error())
+		return users, nil
+	}
+
+	for rows.Next() {
+		var user models.User
+		err := rows.Scan(&user.ID, &user.Email, &user.FirstName, &user.LastName, &user.Password)
+		if err != nil {
+			return nil, err
+		}
+		users = append(users, user)
+	}
+
+	return users, nil
+}
 
 func FindUser(email string) (models.User, error) {
 	var user models.User
@@ -21,6 +43,12 @@ func FindUser(email string) (models.User, error) {
 }
 
 func CreateUser(user models.User) (int64, error) {
+	hashPass, err := hash.HashPassword(user.Password)
+
+	if err != nil {
+		return 0, errors.New("Password hash fail")
+	}
+
 	sql := `
 		insert into users (
 		   first_name, 
@@ -34,7 +62,7 @@ func CreateUser(user models.User) (int64, error) {
 		&user.FirstName,
 		&user.LastName,
 		&user.Email,
-		&user.Password,
+		hashPass,
 	)
 
 	if err != nil {
