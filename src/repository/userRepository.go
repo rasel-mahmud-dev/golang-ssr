@@ -14,7 +14,6 @@ func FindUsers() ([]models.User, error) {
 
 	rows, err := database.Db.Query(`select id, email, first_name, last_name, password from users`)
 	if err != nil {
-		fmt.Println(err.Error())
 		return users, nil
 	}
 

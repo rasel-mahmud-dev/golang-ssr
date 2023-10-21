@@ -5,6 +5,7 @@ import (
 	"github.com/rasel-mahmud-dev/golang-ssr/src/models"
 	"github.com/rasel-mahmud-dev/golang-ssr/src/repository"
 	"github.com/rasel-mahmud-dev/golang-ssr/src/services"
+	"net/http"
 	"strings"
 )
 
@@ -22,7 +23,7 @@ func Login(c *gin.Context) {
 	user, err := services.Login(body.Email, body.Password)
 
 	if err != nil {
-		c.JSON(500, map[string]string{"message": err.Error()})
+		c.JSON(http.StatusInternalServerError, gin.H{"message": err.Error()})
 		return
 	}
 
@@ -30,15 +31,12 @@ func Login(c *gin.Context) {
 }
 
 func GetAllUsers(c *gin.Context) {
-
 	users, err := repository.FindUsers()
-
 	if err != nil {
-		c.JSON(500, map[string]string{"message": err.Error()})
+		c.JSON(http.StatusInternalServerError, gin.H{"message": err.Error()})
 		return
 	}
-
-	c.JSON(200, users)
+	c.JSON(http.StatusOK, users)
 }
 
 func Registration(c *gin.Context) {
@@ -46,14 +44,14 @@ func Registration(c *gin.Context) {
 
 	err := c.Bind(&user)
 	if err != nil {
-		c.JSON(500, map[string]string{"message": err.Error()})
+		c.JSON(http.StatusInternalServerError, gin.H{"message": err.Error()})
 		return
 	}
 
 	result, err := services.CreateUser(user)
 
 	if err != nil {
-		c.JSON(500, map[string]string{"message": err.Error()})
+		c.JSON(http.StatusInternalServerError, gin.H{"message": err.Error()})
 		return
 	}
 
@@ -67,7 +65,7 @@ func AuthVerify(c *gin.Context) {
 
 	user, err := services.VerifyAuthUser(token)
 	if err != nil {
-		c.JSON(500, map[string]string{"message": err.Error()})
+		c.JSON(http.StatusInternalServerError, gin.H{"message": err.Error()})
 		return
 	}
 

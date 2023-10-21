@@ -5,13 +5,14 @@ import (
 	"fmt"
 	"github.com/rasel-mahmud-dev/golang-ssr/src/models"
 	"github.com/rasel-mahmud-dev/golang-ssr/src/repository"
+	"github.com/rasel-mahmud-dev/golang-ssr/src/services/hash"
 	"strconv"
 )
 
 func Login(email string, password string) (interface{}, error) {
 	user, _ := repository.FindUser(email)
 
-	if user.Password != password {
+	if !hash.CheckPasswordHash(password, user.Password) {
 		return nil, errors.New("password wrong")
 	}
 

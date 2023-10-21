@@ -5,16 +5,16 @@ import (
 )
 
 type User struct {
-	ID                  int64     `db:"id"`
-	FirstName           string    `db:"first_name"`
-	LastName            string    `db:"last_name"`
-	Email               string    `db:"email"`
-	Password            string    `db:"password"`
-	ProfilePictureURL   string    `db:"profile_picture_url"`
-	CreatedAt           time.Time `db:"created_at"`
-	IsVerified          bool      `db:"is_verified"`
-	VerificationCode    int64     `db:"verification_code"`
-	VerificationExpired time.Time `db:"verification_expired"`
+	ID                  int64     `json:"id"`
+	FirstName           string    `json:"first_name"`
+	LastName            string    `json:"last_name"`
+	Email               string    `json:"email"`
+	Password            string    `json:"password"`
+	ProfilePictureURL   string    `json:"profile_picture_url"`
+	CreatedAt           time.Time `json:"created_at"`
+	IsVerified          bool      `json:"is_verified"`
+	VerificationCode    int64     `json:"verification_code"`
+	VerificationExpired time.Time `json:"verification_expired"`
 }
 
 func AddUser(article Article) error {
