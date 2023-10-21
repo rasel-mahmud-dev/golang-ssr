@@ -1,9 +1,9 @@
 package models
 
 import (
-	"awesomeProject/src/database"
 	"database/sql"
 	"fmt"
+	"github.com/rasel-mahmud-dev/golang-ssr/src/database"
 )
 
 type Article struct {

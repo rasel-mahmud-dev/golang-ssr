@@ -1,8 +1,8 @@
 package routes
 
 import (
-	"awesomeProject/src/models"
 	"github.com/gin-gonic/gin"
+	"github.com/rasel-mahmud-dev/golang-ssr/src/models"
 	"net/http"
 )
 
@@ -10,10 +10,10 @@ func Route() *gin.Engine {
 
 	route := gin.Default()
 
-	api := route.Group("/api/v1")
+	api := route.Group("/api")
 
 	ArticleRoute(api.Group("/articles"))
-	AuthRoute(api.Group("/users"))
+	AuthRoute(api.Group("/auth"))
 
 	route.Static("/static", "src/public")
 

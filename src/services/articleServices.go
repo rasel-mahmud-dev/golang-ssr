@@ -1,7 +1,7 @@
 package services
 
 import (
-	"awesomeProject/src/models"
+	"github.com/rasel-mahmud-dev/golang-ssr/src/models"
 )
 
 func GetArticles() []models.Article {

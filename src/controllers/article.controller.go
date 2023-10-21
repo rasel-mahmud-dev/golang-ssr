@@ -1,10 +1,10 @@
 package controllers
 
 import (
-	"awesomeProject/src/models"
-	"awesomeProject/src/services"
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"github.com/rasel-mahmud-dev/golang-ssr/src/models"
+	"github.com/rasel-mahmud-dev/golang-ssr/src/services"
 	"net/http"
 )
 

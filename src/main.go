@@ -1,9 +1,10 @@
 package main
 
 import (
-	"awesomeProject/src/database"
-	"awesomeProject/src/initializer"
-	"awesomeProject/src/routes"
+	"fmt"
+	"github.com/rasel-mahmud-dev/golang-ssr/src/database"
+	"github.com/rasel-mahmud-dev/golang-ssr/src/initializer"
+	"github.com/rasel-mahmud-dev/golang-ssr/src/routes"
 )
 
 func init() {
@@ -16,6 +17,10 @@ func init() {
 
 func main() {
 	r := routes.Route()
-	r.Run(":8089") // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
+	err := r.Run(":8089")
+	if err != nil {
+		fmt.Println("Server error..")
+		return
+	} // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 
 }

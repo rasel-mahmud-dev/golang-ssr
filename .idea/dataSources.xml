@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="database.db" uuid="50fb15f3-608d-4d47-914d-9232d9f4596e">
-      <driver-ref>sqlite.xerial</driver-ref>
+    <data-source source="LOCAL" name="neondb@ep-soft-block-99087967.ap-southeast-1.aws.neon.tech" uuid="f9b2b951-6dc9-4f1d-9c85-c09eb732efb4">
+      <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
-      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Users\RaseL\GolandProjects\oop-golang\database.db</jdbc-url>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://ep-soft-block-99087967.ap-southeast-1.aws.neon.tech:5432/neondb</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

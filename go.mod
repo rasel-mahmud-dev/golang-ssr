@@ -1,4 +1,4 @@
-module awesomeProject
+module github.com/rasel-mahmud-dev/golang-ssr
 
 go 1.21
 
