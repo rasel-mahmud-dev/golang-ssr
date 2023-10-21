@@ -12,11 +12,13 @@ func Login(email string, password string) (interface{}, error) {
 		return nil, errors.New("password wrong")
 	}
 
+	token := GenerateToken(int32(user.ID))
+
 	return map[string]interface{}{
 		"user": map[string]interface{}{
 			"id":    user.ID,
 			"email": user.Email,
 		},
-		"token": "generated jwt token..",
+		"token": token,
 	}, nil
 }
