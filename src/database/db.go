@@ -3,26 +3,23 @@ package database
 import (
 	"database/sql"
 	"fmt"
-	_ "modernc.org/sqlite"
+	_ "github.com/lib/pq"
 	"os"
 )
 
 var Db *sql.DB
 
-func DbConnect() {
-	// Connect to the database
-	cdb, err := sql.Open("sqlite", "./database.db")
+func DbConnect() (*sql.DB, error) {
+	dns := os.Getenv("DB_URL")
+	var err error = nil
+	Db, err = sql.Open("postgres", dns)
 	if err != nil {
-		panic(err)
-	}
-	Db = cdb
-	//defer db.Close()
-
-	file, err := os.ReadFile("seed_sql.sql")
-	if err != nil {
-		fmt.Println(err)
+		fmt.Println("Database connection fail!")
+		return Db, err
 	}
 
-	_, err = Db.Exec(string(file))
+	fmt.Println("Connected to the database!")
+
+	return Db, err
 
 }
