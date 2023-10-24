@@ -17,6 +17,7 @@ func Gen2(userId string) (string, error) {
 	JwtSecret := os.Getenv("JWT_SECRET")
 	claims := jwt.MapClaims{}
 	claims["userId"] = userId
+	claims["ExpiresAt"] = time.Now().Add(10 * time.Hour).Unix()
 	claims["exp"] = time.Now().Add(10 * time.Hour).Unix()
 	claims["iat"] = time.Now().Unix()
 
@@ -52,10 +53,11 @@ func GenerateToken(userId int32) string {
 
 func ParseJwtToken(token string) (error, JwtClaims) {
 	JwtSecret := os.Getenv("JWT_SECRET")
+
 	tokenExtract, err := jwt.Parse(token, func(token *jwt.Token) (interface{}, error) {
 
 		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
-			return nil, fmt.Errorf("Unexpected signing method")
+			return nil, fmt.Errorf("unexpected signing method")
 		}
 		return []byte(JwtSecret), nil
 	})
@@ -65,6 +67,8 @@ func ParseJwtToken(token string) (error, JwtClaims) {
 	}
 
 	claims, ok := tokenExtract.Claims.(JwtClaims)
+
+	fmt.Println(ok, claims.IssuedAt)
 
 	if ok && tokenExtract.Valid {
 		return nil, claims
