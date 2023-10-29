@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+
+<div class="container">
+    <video controls="controls"></video>
+</div>
+<button>Play</button>
+
+<script>
+
+    const btn = document.querySelector("button")
+
+    window.addEventListener("DOMContentLoaded", function () {
+        btn.addEventListener("click", ()=>{
+        playVideo()
+
+        })
+    })
+
+
+    function playVideo() {
+
+        const video = document.querySelector("video")
+
+        const rangeHeader = 'bytes=0-10000'; // Request the whole video
+
+        fetch("/get-chunk?start=0&end=50000", {
+            headers: {
+                Range: rangeHeader
+            }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.arrayBuffer();
+            })
+            .then(b => {
+                const videoBlob = new Blob([b], {type: 'video/mp4'});
+                console.log(b.byteLength)
+                const videoUrl = URL.createObjectURL(videoBlob);
+                video.src = videoUrl;
+                video.controls = true;
+                video.play();
+            })
+            .catch(error => {
+                console.error('Error fetching or playing video:', error);
+            });
+
+    }
+
+</script>
+
+
+</body>
+</html>

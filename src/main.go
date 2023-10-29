@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/rasel-mahmud-dev/golang-ssr/src/database"
 	"github.com/rasel-mahmud-dev/golang-ssr/src/initializer"
-	"github.com/rasel-mahmud-dev/golang-ssr/src/services"
+	"github.com/rasel-mahmud-dev/golang-ssr/src/routes"
 )
 
 func init() {
@@ -16,21 +16,11 @@ func init() {
 }
 
 func main() {
-	//r := routes.Route()
-	//err := r.Run(":8089")
-	//if err != nil {
-	//	fmt.Println("Server error..")
-	//	return
-	//} // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
+	r := routes.Route()
 
-	token := services.GenerateToken(234)
-	fmt.Println(token)
-	err, j := services.ParseJwtToken(token)
+	err := r.Run(":8089")
 	if err != nil {
-		fmt.Println(err)
+		fmt.Println("Server error..")
 		return
-	}
-
-	fmt.Println(j)
-
+	} // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }

@@ -14,6 +14,7 @@ func Route() *gin.Engine {
 
 	ArticleRoute(api.Group("/articles"))
 	AuthRoute(api.Group("/auth"))
+	StreamRoute(api.Group("/stream"))
 
 	route.Static("/static", "src/public")
 
